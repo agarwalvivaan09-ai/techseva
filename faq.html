@@ -3,30 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FAQ | TechSeva E-Waste Collection</title>
-  <meta name="description" content="Answers to common questions about donating e-waste to TechSeva: cost, accepted items, pickups, batteries, data safety and recycling certificates.">
-  <meta name="theme-color" content="#0b1440">
+  <title>FAQ | TechSeva</title>
+  <meta name="description" content="Answers to common questions about donating e-waste to TechSeva.">
+  <meta name="theme-color" content="#060814">
   <link rel="canonical" href="https://agarwalvivaan09-ai.github.io/techseva/faq.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="TechSeva">
-  <meta property="og:title" content="FAQ | TechSeva E-Waste Collection">
-  <meta property="og:description" content="Answers to common questions about donating e-waste to TechSeva: cost, accepted items, pickups, batteries, data safety and recycling certificates.">
-  <meta property="og:image" content="https://agarwalvivaan09-ai.github.io/techseva/assets/img/logo-full.svg">
+  <meta property="og:title" content="FAQ | TechSeva">
+  <meta property="og:description" content="Answers to common questions about donating e-waste to TechSeva.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+  <canvas id="net" aria-hidden="true"></canvas>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <nav class="container nav" aria-label="Main">
-      <a class="brand" href="index.html" aria-label="TechSeva home">
-        <img src="assets/img/logo-mark.svg" alt="" width="42" height="42">
-        <span><span class="brand-name">TECH SEVA</span><span class="brand-tag">E-WASTE SERVICE ORG</span></span>
-      </a>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <a class="brand" href="index.html" aria-label="TechSeva home"><img src="assets/img/logo-mark.svg" alt="" width="36" height="36"><span><b>TECH SEVA</b><small>E-WASTE SERVICE ORG</small></span></a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -36,7 +33,7 @@
         <li><a href="learn.html">Learn</a></li>
         <li><a href="get-involved.html">Get Involved</a></li>
         <li><a href="faq.html" aria-current="page">FAQ</a></li>
-        <li><a class="btn btn-primary" href="contact.html#pickup">Request Pickup</a></li>
+        <li><a class="btn btn-primary" href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -44,52 +41,39 @@
   <main id="main">
     <section class="page-hero">
       <div class="container">
-        <div class="crumbs"><a href="index.html">Home</a> / FAQ</div>
-        <div class="eyebrow">FAQ</div>
-        <h1>Frequently asked questions</h1>
-        <p class="lead">Quick answers about donating, data safety, recycling and partnering with TechSeva.</p>
+        <div class="label">FAQ</div>
+        <h1>Questions, answered.</h1>
+        <p class="lead">Can’t find what you need? <a href="contact.html">Contact us</a>.</p>
+      </div>
+    </section>
+
+    <section style="padding-top:8px">
+      <div class="container">
+        <div class="faq reveal">
+          <details><summary>Does it cost anything?</summary><p>No. Collection is free for households, and we never charge donors.</p></details>
+          <details><summary>Do you pay for e-waste?</summary><p>No. TechSeva is a nonprofit service, not a scrap buyer. Our job is to make sure your e-waste is recycled responsibly.</p></details>
+          <details><summary>Which areas do you cover?</summary><p>Kolkata and nearby areas. If you’re further away, contact us anyway and we may be able to arrange a drive.</p></details>
+          <details><summary>Is there a minimum quantity?</summary><p>No. For one or two small items, dropping off at a drive is usually easiest, but just ask.</p></details>
+          <details><summary>Do you accept working devices?</summary><p>Yes. Working devices in good condition may be passed on for reuse where safe; everything else is recycled.</p></details>
+          <details><summary>Can I donate batteries?</summary><p>Intact ones, yes. Tape the terminals of loose batteries. We can’t accept swollen or leaking batteries, or vehicle batteries.</p></details>
+          <details><summary>Is my data safe?</summary><p>Please back up and factory-reset devices before handover. Our <a href="how-it-works.html#guidelines">data-wipe guide</a> shows how. Wiping it yourself first is always the best protection.</p></details>
+          <details><summary>Who recycles the e-waste?</summary><p>Hulladek Recycling, a Kolkata-based recycler authorised by the Central Pollution Control Board.</p></details>
+          <details><summary>How do I know it’s actually recycled?</summary><p>Each consignment gets an official certificate, published on our <a href="impact.html#certificates">Impact page</a>.</p></details>
+          <details><summary>Can my organisation get a certificate?</summary><p>Yes. For organisations and large donations we share the certificate covering your consignment.</p></details>
+        </div>
       </div>
     </section>
 
     <section>
       <div class="container">
-        <div class="faq-group reveal"><h2>General</h2><div class="faq">
-          <details><summary>What is TechSeva?</summary><div>TechSeva is a student-led nonprofit initiative in Kolkata that collects e-waste from households, schools and businesses and sends it to a government-authorised recycler for safe processing.</div></details>
-          <details><summary>Does it cost anything?</summary><div>No. Collection is free for households, and we never charge donors. For very large commercial volumes we may discuss logistics with you, but we’ll always say so upfront.</div></details>
-          <details><summary>Do you pay for e-waste?</summary><div>No. TechSeva is a nonprofit service, not a scrap buyer. Our job is to make sure your e-waste is recycled responsibly, not to resell it.</div></details>
-          <details><summary>Which areas do you cover?</summary><div>We currently serve Kolkata and nearby areas. If you’re further away, <a href="contact.html">contact us</a> anyway. We may be able to arrange a drive or point you to an authorised collection centre.</div></details>
-        </div></div>
-        <div class="faq-group reveal"><h2>Donating</h2><div class="faq">
-          <details><summary>What items do you accept?</summary><div>Almost anything with a plug, battery or circuit board, from phones, laptops and cables to monitors, small appliances and ACs. See the <a href="what-we-accept.html">full list</a>.</div></details>
-          <details><summary>Is there a minimum quantity for pickup?</summary><div>No strict minimum. For a single charger or phone it’s usually easiest to drop it off at our next drive, but just ask and we’ll work something out.</div></details>
-          <details><summary>Do you accept devices that still work?</summary><div>Yes. Working devices in good condition may be passed on for reuse where that’s safe. Everything else is recycled.</div></details>
-          <details><summary>Can I donate batteries?</summary><div>Intact batteries, yes. Keep them inside the device, or tape the terminals of loose cells and pack them separately. We can’t accept swollen, leaking or damaged batteries, or vehicle batteries.</div></details>
-          <details><summary>How soon can you pick up?</summary><div>Usually within a week of your request. Large appliances may need a little more time to arrange transport.</div></details>
-        </div></div>
-        <div class="faq-group reveal"><h2>Data & recycling</h2><div class="faq">
-          <details><summary>Is my data safe?</summary><div>Please back up, sign out of all accounts and factory-reset your devices before handing them over. Our <a href="how-it-works.html#guidelines">data-safety guide</a> shows how. Our recycling partner also offers data destruction as part of its process, but wiping your device first is always the best protection.</div></details>
-          <details><summary>Who recycles the e-waste?</summary><div>Hulladek Recycling, a Kolkata-based e-waste management company authorised by the Central Pollution Control Board (CPCB).</div></details>
-          <details><summary>How do I know it’s actually recycled?</summary><div>Every consignment receives an official recycling certificate from our partner. We publish them on our <a href="impact.html#certificates">Impact page</a>.</div></details>
-          <details><summary>Can I get a certificate for my donation?</summary><div>For organisations and large donations, ask us and we’ll share the consignment certificate covering your items. Individuals can get an email confirmation of what was collected.</div></details>
-        </div></div>
-        <div class="faq-group reveal"><h2>Partnering</h2><div class="faq">
-          <details><summary>Can my school or society host a drive?</summary><div>Yes, we’d love that. See <a href="get-involved.html#drives">Host a drive</a> or <a href="contact.html#pickup">get in touch</a>.</div></details>
-          <details><summary>Can I volunteer?</summary><div>Absolutely. Sign up on the <a href="get-involved.html#volunteer">Get Involved</a> page.</div></details>
-        </div></div>
-        <div class="callout mt-2" style="max-width:860px"><strong>Still have a question?</strong> Email <a href="mailto:mist2k26@gmail.com">mist2k26@gmail.com</a> or call <a href="tel:+910000000000">+91 XXXXX XXXXX</a>.</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="cta-band reveal">
+        <div class="cta reveal">
           <div>
-            <h2>Got a drawer full of old electronics?</h2>
-            <p>Tell us what you have. We’ll arrange a free pickup or drop-off and make sure it’s recycled responsibly.</p>
+            <h2>Have old electronics at home?</h2>
+            <p>Tell us what you have. We’ll arrange a free pickup and make sure it’s recycled properly.</p>
           </div>
-          <div class="actions">
-            <a class="btn btn-light" href="contact.html#pickup">Request a pickup <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            <a class="btn btn-ghost" href="tel:+910000000000">Call +91 XXXXX XXXXX</a>
+          <div class="actions" style="margin:0">
+            <a class="btn btn-primary" href="contact.html#pickup">Request a pickup <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-ghost" href="tel:+910000000000">Call us</a>
           </div>
         </div>
       </div>
@@ -99,34 +83,35 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand">
-          <a class="brand" href="index.html"><img src="assets/img/logo-mark.svg" alt="" width="42" height="42"><span><span class="brand-name">TECH SEVA</span><span class="brand-tag">E-WASTE SERVICE ORG</span></span></a>
-          <p>A student-led, community-driven nonprofit initiative collecting household e-waste in Kolkata and routing it to an authorised recycler.</p>
+        <div>
+          <a class="brand" href="index.html"><img src="assets/img/logo-mark.svg" alt="" width="36" height="36"><span><b>TECH SEVA</b><small>E-WASTE SERVICE ORG</small></span></a>
+          <p>A student-led nonprofit collecting household e-waste in Kolkata and routing it to an authorised recycler.</p>
         </div>
         <div>
-          <h4>Explore</h4>
+          <h4>Organisation</h4>
           <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="what-we-accept.html">What We Accept</a></li>
-            <li><a href="how-it-works.html">How It Works</a></li>
-            <li><a href="impact.html">Impact &amp; Certificates</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Get Involved</h4>
-          <ul>
-            <li><a href="get-involved.html">Volunteer</a></li>
-            <li><a href="get-involved.html#drives">Host a Drive</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="impact.html">Impact</a></li>
             <li><a href="learn.html">E-Waste 101</a></li>
             <li><a href="faq.html">FAQ</a></li>
           </ul>
         </div>
         <div>
+          <h4>Donate</h4>
+          <ul>
+            <li><a href="what-we-accept.html">What We Accept</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="contact.html#pickup">Request Pickup</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+          </ul>
+        </div>
+        <div>
           <h4>Contact</h4>
           <ul>
-            <li><a href="mailto:mist2k26@gmail.com">mist2k26@gmail.com</a></li>
+            <li><a href="mailto:agarwalvivaan09@gmail.com">agarwalvivaan09@gmail.com</a></li>
             <li><a href="tel:+910000000000">+91 XXXXX XXXXX</a></li>
-            <li>Kolkata, West Bengal, India</li>
+            <li><a href="https://www.instagram.com/vivaan_agarwal__/" target="_blank" rel="noopener">Instagram @vivaan_agarwal__</a></li>
+            <li>Kolkata, India</li>
           </ul>
         </div>
       </div>

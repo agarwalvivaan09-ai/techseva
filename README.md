@@ -4,6 +4,8 @@ Website for **TechSeva**, a student-led nonprofit e-waste collection initiative 
 
 Plain HTML/CSS/JS with no build step needed to host. Works on GitHub Pages as-is.
 
+Design: a dark theme with an animated neural-network background (`assets/js/main.js`) and an iridescent 3D blob in the hero (`assets/js/blob.js`, using three.js r128 from `assets/js/vendor/`).
+
 ## Pages
 | Page | File |
 |---|---|
@@ -20,7 +22,7 @@ Plain HTML/CSS/JS with no build step needed to host. Works on GitHub Pages as-is
 Forms open the visitor's email app with the details pre-filled (no server needed).
 
 ## Editing contact details
-All pages are generated from `tools/build.py`. Change `EMAIL`, `PHONE_DISPLAY` and `PHONE_TEL` at the top, then run:
+All pages are generated from `tools/build.py`. Change `EMAIL`, `PHONE_DISPLAY`, `PHONE_TEL`, `INSTAGRAM_URL` and `INSTAGRAM_HANDLE` at the top, then run:
 
 ```bash
 python3 tools/build.py .

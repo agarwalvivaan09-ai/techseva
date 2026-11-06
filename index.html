@@ -3,30 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TechSeva | Free E-Waste Collection & Responsible Recycling in Kolkata</title>
-  <meta name="description" content="TechSeva is a student-led nonprofit e-waste initiative in Kolkata. We collect old electronics from homes, schools and offices for certified, responsible recycling.">
-  <meta name="theme-color" content="#0b1440">
+  <title>TechSeva | E-Waste Collection & Recycling in Kolkata</title>
+  <meta name="description" content="TechSeva is a student-led nonprofit in Kolkata that collects old electronics from homes, schools and offices for certified, responsible recycling.">
+  <meta name="theme-color" content="#060814">
   <link rel="canonical" href="https://agarwalvivaan09-ai.github.io/techseva/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="TechSeva">
-  <meta property="og:title" content="TechSeva | Free E-Waste Collection & Responsible Recycling in Kolkata">
-  <meta property="og:description" content="TechSeva is a student-led nonprofit e-waste initiative in Kolkata. We collect old electronics from homes, schools and offices for certified, responsible recycling.">
-  <meta property="og:image" content="https://agarwalvivaan09-ai.github.io/techseva/assets/img/logo-full.svg">
+  <meta property="og:title" content="TechSeva | E-Waste Collection & Recycling in Kolkata">
+  <meta property="og:description" content="TechSeva is a student-led nonprofit in Kolkata that collects old electronics from homes, schools and offices for certified, responsible recycling.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+  <canvas id="net" aria-hidden="true"></canvas>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <nav class="container nav" aria-label="Main">
-      <a class="brand" href="index.html" aria-label="TechSeva home">
-        <img src="assets/img/logo-mark.svg" alt="" width="42" height="42">
-        <span><span class="brand-name">TECH SEVA</span><span class="brand-tag">E-WASTE SERVICE ORG</span></span>
-      </a>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <a class="brand" href="index.html" aria-label="TechSeva home"><img src="assets/img/logo-mark.svg" alt="" width="36" height="36"><span><b>TECH SEVA</b><small>E-WASTE SERVICE ORG</small></span></a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -36,7 +33,7 @@
         <li><a href="learn.html">Learn</a></li>
         <li><a href="get-involved.html">Get Involved</a></li>
         <li><a href="faq.html">FAQ</a></li>
-        <li><a class="btn btn-primary" href="contact.html#pickup">Request Pickup</a></li>
+        <li><a class="btn btn-primary" href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -45,148 +42,86 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Responsible e-waste recycling · Kolkata</div>
-          <h1>Give your old electronics a <span class="grad-text">responsible</span> end.</h1>
-          <p class="lead">TechSeva collects unused and broken electronics from homes, housing societies, schools and offices, and hands every kilo to a government-authorised recycler. Free, simple and fully documented.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="contact.html#pickup">Request a free pickup <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            <a class="btn btn-ghost" href="what-we-accept.html">See what we accept</a>
-          </div>
-          <div class="hero-trust">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Free collection</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> CPCB-authorised recycler</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Recycling certificates</span>
+          <div class="label">E-waste collection · Kolkata</div>
+          <h1>Responsible recycling for the <span class="grad">electronics you no longer use.</span></h1>
+          <p class="lead">TechSeva collects old and broken electronics from homes, schools and offices and hands every kilo to a government-authorised recycler. It’s free, and every consignment is certified.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="contact.html#pickup">Request a free pickup <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-ghost" href="what-we-accept.html">What we accept</a>
           </div>
         </div>
-        <div class="hero-art">
-          <img src="assets/img/logo-full.svg" alt="TechSeva logo — E-Waste Service Org" width="440" height="440">
-          <div class="hero-badge b1"><strong class="grad-text">317+ kg</strong>e-waste recycled</div>
-          <div class="hero-badge b2"><strong>100%</strong>sent to authorised recycling</div>
+        <div class="blob-wrap" id="blob"><img src="assets/img/blob.svg" alt=""></div>
+      </div>
+    </section>
+
+    <section style="padding-top:8px">
+      <div class="container">
+        <div class="stats reveal">
+          <div class="stat"><b class="grad">317.8 kg</b><span>E-waste recycled</span></div>
+          <div class="stat"><b class="grad">2</b><span>Certified consignments</span></div>
+          <div class="stat"><b class="grad">100%</b><span>Sent to authorised recycler</span></div>
+          <div class="stat"><b class="grad">₹0</b><span>Cost to donors</span></div>
         </div>
       </div>
     </section>
 
     <section>
       <div class="container">
-        <div class="stats">
-          <div class="stat reveal"><strong class="grad-text"><span data-count="317">317</span>+ kg</strong><span>E-waste collected and certified as recycled</span></div>
-          <div class="stat reveal"><strong class="grad-text" data-count="2">2</strong><span>Documented collection drives with recycling certificates</span></div>
-          <div class="stat reveal"><strong class="grad-text">100%</strong><span>Handed to a CPCB-authorised recycler</span></div>
-          <div class="stat reveal"><strong class="grad-text">₹0</strong><span>Cost to donors, always</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-alt">
-      <div class="container split">
-        <div class="reveal">
-          <div class="eyebrow">The problem</div>
-          <h2>The world’s fastest-growing waste stream is sitting in our drawers.</h2>
-          <p class="lead">In 2022 the world generated a record <strong>62 million tonnes</strong> of e-waste, and only <strong>22.3%</strong> of it was documented as properly collected and recycled.</p>
-          <p>Old phones, chargers and cables hold lead, mercury, cadmium and flame retardants that leak into soil and water when dumped or burned. They also hold copper, gold and other valuable metals that can be recovered and reused. TechSeva closes that gap, starting where the problem starts: our own homes.</p>
-          <a class="btn btn-outline" href="learn.html">Learn about e-waste <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div class="grid g2 reveal">
-          <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.7 18-8-14a2 2 0 0 0-3.5 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3z"/><path d="M12 9v4M12 17h.01"/></svg></div><h3>Toxic if dumped</h3><p>Heavy metals and chemicals pollute land, water and air when e-waste is burned or landfilled.</p></div>
-          <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg></div><h3>Valuable if recycled</h3><p>Copper, aluminium, gold and rare metals can be recovered and returned to manufacturing.</p></div>
-          <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.7 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Data at risk</h3><p>Old phones and drives often still hold personal data. They need careful handling.</p></div>
-          <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div><h3>Stored indefinitely</h3><p>Most households keep unused gadgets for years because they don’t know where to send them.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-head center reveal">
-          <div class="eyebrow">How it works</div>
-          <h2>Four steps from clutter to certified recycling</h2>
-          <p class="lead">We’ve kept it simple. You tell us what you have, and we handle the rest.</p>
-        </div>
-        <div class="grid g4 steps">
-          <div class="card step reveal"><h3>Tell us</h3><p>Fill in the pickup form or call us with a rough list of items and your location.</p></div>
-          <div class="card step reveal"><h3>Prepare</h3><p>Back up and wipe your data, remove SIM and memory cards, and bag small items together.</p></div>
-          <div class="card step reveal"><h3>We collect</h3><p>We pick up at a time that suits you, or you drop off at a collection drive.</p></div>
-          <div class="card step reveal"><h3>Certified recycling</h3><p>Everything goes to Hulladek Recycling, a CPCB-authorised recycler, and we receive a recycling certificate.</p></div>
-        </div>
-        <p class="center mt-2"><a class="btn btn-outline" href="how-it-works.html">Full process &amp; guidelines <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></p>
-      </div>
-    </section>
-
-    <section class="section-dark">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="eyebrow">What we accept</div>
-          <h2>If it has a plug, battery or circuit board, we probably take it.</h2>
+        <div class="head reveal">
+          <div class="label">Process</div>
+          <h2>From your drawer to certified recycling</h2>
         </div>
         <div class="grid g4">
-          <div class="card reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div><h3>Phones &amp; tablets</h3><p>Mobiles, feature phones, tablets, e-readers.</p></div>
-          <div class="card reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg></div><h3>Computers</h3><p>Laptops, desktops, CPUs, keyboards, mice, hard drives.</p></div>
-          <div class="card reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Screens &amp; TVs</h3><p>LCD/LED monitors and televisions.</p></div>
-          <div class="card reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a1 1 0 0 1-1-1v-1a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1v2M19 15V6.5a3.5 3.5 0 0 0-7 0v11a3.5 3.5 0 0 1-7 0V9M7 3v2a1 1 0 0 1 1 1v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1V3"/></svg></div><h3>Cables &amp; chargers</h3><p>Wires, adapters, power banks, extension boards.</p></div>
-          <div class="card reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></div><h3>Office equipment</h3><p>Printers, scanners, routers, modems, UPS units.</p></div>
-          <div class="card reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="15" rx="2"/><rect x="5" y="7" width="10" height="9" rx="1"/><path d="M18 8h.01M18 11h.01M18 14h.01"/></svg></div><h3>Small appliances</h3><p>Microwaves, toasters, irons, mixers, kettles.</p></div>
-          <div class="card reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="10" rx="2"/><path d="M6 11h12M8 19l-1 2M12 19v2M16 19l1 2"/></svg></div><h3>Large appliances</h3><p>ACs, fridges, washing machines (by arrangement).</p></div>
-          <div class="card reveal"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5M9 8V2M15 8V2M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8z"/></svg></div><h3>Everything else</h3><p>Speakers, remotes, cameras, toys with circuits, and more.</p></div>
+          <div class="card reveal"><span class="num">01</span><h3>Request</h3><p>Use the pickup form or call us with a rough list of items.</p></div>
+          <div class="card reveal"><span class="num">02</span><h3>Prepare</h3><p>Back up and wipe your devices, and remove SIM and memory cards.</p></div>
+          <div class="card reveal"><span class="num">03</span><h3>Collect</h3><p>We pick up from your door, or you drop off at a drive.</p></div>
+          <div class="card reveal"><span class="num">04</span><h3>Recycle</h3><p>A CPCB-authorised recycler processes it and issues a certificate.</p></div>
         </div>
-        <p class="mt-2"><a class="btn btn-light" href="what-we-accept.html">Full list &amp; what we can’t take <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div class="reveal">
+          <div class="label">What we accept</div>
+          <h2>If it has a plug, battery or circuit board, send it our way.</h2>
+          <p>Phones, laptops, monitors, cables, chargers, printers, routers, small kitchen appliances, and even ACs and fridges by arrangement. Working or broken.</p>
+          <div class="actions"><a class="btn btn-ghost" href="what-we-accept.html">See the full list <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+        </div>
+        <div class="grid g2 reveal">
+          <div class="card"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m21.7 18-8-14a2 2 0 0 0-3.5 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3z"/><path d="M12 9v4M12 17h.01"/></svg></div><h3>Toxic if dumped</h3><p>Lead, mercury and cadmium leach into soil and water.</p></div>
+          <div class="card"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg></div><h3>Valuable if recycled</h3><p>Copper, gold and rare metals are recovered and reused.</p></div>
+          <div class="card"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.7 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Handled safely</h3><p>Data-safety guidance and an authorised recycler only.</p></div>
+          <div class="card"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M9 15l2 2 4-4"/></svg></div><h3>Fully documented</h3><p>Every consignment is weighed and certified.</p></div>
+        </div>
       </div>
     </section>
 
     <section>
       <div class="container">
-        <div class="section-head reveal">
-          <div class="eyebrow">Recent collections</div>
-          <h2>From homes and offices to the recycler</h2>
-          <p class="lead">A few of the items picked up during our latest drive, from a window AC to an old desktop setup.</p>
+        <div class="head reveal">
+          <div class="label">Recent collections</div>
+          <h2>Picked up this season</h2>
         </div>
         <div class="gallery">
-          <figure class="shot reveal">
-            <div class="frame"><span class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="10" rx="2"/><path d="M6 11h12M8 19l-1 2M12 19v2M16 19l1 2"/></svg></span><img src="assets/img/collection-ac.jpg" alt="Window air conditioner collected by TechSeva" loading="lazy" style="position:absolute;inset:0"></div>
-            <figcaption><strong>Window air conditioner</strong>Large appliance — collected for dismantling</figcaption>
-          </figure>
-          <figure class="shot reveal">
-            <div class="frame"><span class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="15" rx="2"/><rect x="5" y="7" width="10" height="9" rx="1"/><path d="M18 8h.01M18 11h.01M18 14h.01"/></svg></span><img src="assets/img/collection-uv-cabinet.jpg" alt="UV-C disinfection cabinet collected by TechSeva" loading="lazy" style="position:absolute;inset:0"></div>
-            <figcaption><strong>UV-C disinfection cabinet</strong>Small household appliance</figcaption>
-          </figure>
-          <figure class="shot reveal">
-            <div class="frame"><span class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><img src="assets/img/collection-monitor.jpg" alt="LCD computer monitor collected by TechSeva" loading="lazy" style="position:absolute;inset:0"></div>
-            <figcaption><strong>LCD computer monitor</strong>IT equipment — screens handled separately</figcaption>
-          </figure>
-          <figure class="shot reveal">
-            <div class="frame"><span class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 6h4M10 10h4M12 17h.01"/></svg></span><img src="assets/img/collection-cpu.jpg" alt="Desktop CPU cabinet collected by TechSeva" loading="lazy" style="position:absolute;inset:0"></div>
-            <figcaption><strong>Desktop CPU cabinet</strong>IT equipment — routed for data-safe recycling</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-alt">
-      <div class="container split">
-        <div class="panel reveal">
-          <p class="eyebrow">Our story</p>
-          <p class="quote">“It started with a drawer full of old cables and broken gadgets. If I had this much e-waste lying around, so did everyone else.”</p>
-          <p class="mb-0">Vivaan Agarwal, Founder</p>
-        </div>
-        <div class="reveal">
-          <div class="eyebrow">About TechSeva</div>
-          <h2>Small, local, and fully accountable.</h2>
-          <p>TechSeva (<em>seva</em> means service) began as a student-led effort to collect e-waste from family, friends and neighbours. It has grown into a repeatable system of outreach, collection, logistics and certified recycling.</p>
-          <p>Every drive is weighed and documented, and every kilo is backed by a certificate from our recycling partner.</p>
-          <a class="btn btn-outline" href="about.html">Read our story <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <figure class="shot reveal"><div class="frame" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="10" rx="2"/><path d="M6 11h12M8 19l-1 2M12 19v2M16 19l1 2"/></svg><img src="assets/img/collection-ac.jpg" alt="Window AC collected by TechSeva" loading="lazy"></div><figcaption><b>Window AC</b>Large appliance</figcaption></figure>
+          <figure class="shot reveal"><div class="frame" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="15" rx="2"/><rect x="5" y="7" width="10" height="9" rx="1"/><path d="M18 8h.01M18 11h.01M18 14h.01"/></svg><img src="assets/img/collection-uv-cabinet.jpg" alt="UV-C cabinet collected by TechSeva" loading="lazy"></div><figcaption><b>UV-C cabinet</b>Small appliance</figcaption></figure>
+          <figure class="shot reveal"><div class="frame" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><img src="assets/img/collection-monitor.jpg" alt="LCD monitor collected by TechSeva" loading="lazy"></div><figcaption><b>LCD monitor</b>IT equipment</figcaption></figure>
+          <figure class="shot reveal"><div class="frame" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 6h4M10 10h4M12 17h.01"/></svg><img src="assets/img/collection-cpu.jpg" alt="Desktop CPU collected by TechSeva" loading="lazy"></div><figcaption><b>Desktop CPU</b>IT equipment</figcaption></figure>
         </div>
       </div>
     </section>
 
     <section>
       <div class="container">
-        <div class="cta-band reveal">
+        <div class="cta reveal">
           <div>
-            <h2>Got a drawer full of old electronics?</h2>
-            <p>Tell us what you have. We’ll arrange a free pickup or drop-off and make sure it’s recycled responsibly.</p>
+            <h2>Have old electronics at home?</h2>
+            <p>Tell us what you have. We’ll arrange a free pickup and make sure it’s recycled properly.</p>
           </div>
-          <div class="actions">
-            <a class="btn btn-light" href="contact.html#pickup">Request a pickup <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            <a class="btn btn-ghost" href="tel:+910000000000">Call +91 XXXXX XXXXX</a>
+          <div class="actions" style="margin:0">
+            <a class="btn btn-primary" href="contact.html#pickup">Request a pickup <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a class="btn btn-ghost" href="tel:+910000000000">Call us</a>
           </div>
         </div>
       </div>
@@ -196,34 +131,35 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand">
-          <a class="brand" href="index.html"><img src="assets/img/logo-mark.svg" alt="" width="42" height="42"><span><span class="brand-name">TECH SEVA</span><span class="brand-tag">E-WASTE SERVICE ORG</span></span></a>
-          <p>A student-led, community-driven nonprofit initiative collecting household e-waste in Kolkata and routing it to an authorised recycler.</p>
+        <div>
+          <a class="brand" href="index.html"><img src="assets/img/logo-mark.svg" alt="" width="36" height="36"><span><b>TECH SEVA</b><small>E-WASTE SERVICE ORG</small></span></a>
+          <p>A student-led nonprofit collecting household e-waste in Kolkata and routing it to an authorised recycler.</p>
         </div>
         <div>
-          <h4>Explore</h4>
+          <h4>Organisation</h4>
           <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="what-we-accept.html">What We Accept</a></li>
-            <li><a href="how-it-works.html">How It Works</a></li>
-            <li><a href="impact.html">Impact &amp; Certificates</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Get Involved</h4>
-          <ul>
-            <li><a href="get-involved.html">Volunteer</a></li>
-            <li><a href="get-involved.html#drives">Host a Drive</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="impact.html">Impact</a></li>
             <li><a href="learn.html">E-Waste 101</a></li>
             <li><a href="faq.html">FAQ</a></li>
           </ul>
         </div>
         <div>
+          <h4>Donate</h4>
+          <ul>
+            <li><a href="what-we-accept.html">What We Accept</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="contact.html#pickup">Request Pickup</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+          </ul>
+        </div>
+        <div>
           <h4>Contact</h4>
           <ul>
-            <li><a href="mailto:mist2k26@gmail.com">mist2k26@gmail.com</a></li>
+            <li><a href="mailto:agarwalvivaan09@gmail.com">agarwalvivaan09@gmail.com</a></li>
             <li><a href="tel:+910000000000">+91 XXXXX XXXXX</a></li>
-            <li>Kolkata, West Bengal, India</li>
+            <li><a href="https://www.instagram.com/vivaan_agarwal__/" target="_blank" rel="noopener">Instagram @vivaan_agarwal__</a></li>
+            <li>Kolkata, India</li>
           </ul>
         </div>
       </div>
@@ -233,6 +169,8 @@
       </div>
     </div>
   </footer>
+  <script src="assets/js/vendor/three.min.js" defer></script>
+  <script src="assets/js/blob.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
