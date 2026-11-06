@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-label="TechSeva — E-Waste Service Org">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1440"/><stop offset=".55" stop-color="#120c33"/><stop offset="1" stop-color="#3a0d3a"/></linearGradient>
+    <linearGradient id="blob" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7ef0ff"/><stop offset=".35" stop-color="#8f8bff"/><stop offset=".7" stop-color="#d77bff"/><stop offset="1" stop-color="#ff7ac8"/></linearGradient>
+    <radialGradient id="shine" cx=".35" cy=".3" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="500" height="500" fill="url(#bg)"/>
+  <g stroke="#5a7bff" stroke-opacity=".35" stroke-width="1.2" fill="none"><path d="M0 70 L120 20 L210 90 L330 0 M380 0 L500 120 L420 200 M0 380 L90 300 L40 230 M330 500 L470 380 L500 430 M60 480 L160 420"/></g>
+  <path d="M250 120c48 0 98 28 106 78 9 46-20 94-62 116-40 22-96 18-126-14-30-30-36-76-18-114 18-40 54-66 100-66z" fill="url(#blob)"/>
+  <path d="M196 184c20-26 72-32 98-6-20 6-40 26-40 52-26-20-46-32-58-46z" fill="#fff" fill-opacity=".28"/>
+  <path d="M250 120c48 0 98 28 106 78 9 46-20 94-62 116-40 22-96 18-126-14-30-30-36-76-18-114 18-40 54-66 100-66z" fill="url(#shine)"/>
+  <text x="250" y="400" text-anchor="middle" font-family="Poppins, Montserrat, Arial Black, sans-serif" font-weight="800" font-size="52" fill="#fff" letter-spacing="1">TECH SEVA</text>
+  <text x="250" y="438" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="16" fill="#e6e9ff" letter-spacing="7">E-WASTE SERVICE ORG</text>
+</svg>
