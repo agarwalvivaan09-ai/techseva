@@ -4,7 +4,14 @@
 Edit the CONTACT block below, then run from the repo root:
     python3 tools/build.py .
 """
-import sys, os
+import sys, os, hashlib
+
+def _v(path):
+    try:
+        with open(os.path.join(sys.argv[1] if len(sys.argv) > 1 else ".", path), "rb") as fh:
+            return hashlib.md5(fh.read()).hexdigest()[:8]
+    except OSError:
+        return "1"
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else "."
 
@@ -63,10 +70,10 @@ A = I["arrow"]
 def ic(n):
     return f'<div class="ic" aria-hidden="true">{I[n]}</div>'
 
-BRAND = '<span class="brand-blob" data-blob="mini"><img src="assets/img/blob.svg" alt="" width="40" height="40"></span><span><b>TECH SEVA</b><small>E-WASTE SERVICE ORG</small></span>'
-BRAND_STATIC = '<img src="assets/img/logo-mark.svg" alt="" width="36" height="36"><span><b>TECH SEVA</b><small>E-WASTE SERVICE ORG</small></span>'
+BRAND = f'<span class="brand-blob" data-blob="mini"><img src="assets/img/blob.svg?v={_v("assets/img/blob.svg")}" alt="" width="40" height="40"></span><span><b>TECH SEVA</b><small>E-WASTE SERVICE ORG</small></span>'
+BRAND_STATIC = f'<img src="assets/img/logo-mark.svg?v={_v("assets/img/logo-mark.svg")}" alt="" width="36" height="36"><span><b>TECH SEVA</b><small>E-WASTE SERVICE ORG</small></span>'
 
-def page(fname, title, desc, body, current=None, extra_js='  <script src="assets/js/vendor/three.min.js" defer></script>\n  <script src="assets/js/blob.js" defer></script>\n'):
+def page(fname, title, desc, body, current=None, extra_js=f'  <script src="assets/js/vendor/three.min.js?v={_v("assets/js/vendor/three.min.js")}" defer></script>\n  <script src="assets/js/blob.js?v={_v("assets/js/blob.js")}" defer></script>\n'):
     navlinks = "\n".join(
         f'        <li><a href="{h}"{" aria-current=\"page\"" if h == (current or fname) else ""}>{t}</a></li>' for h, t in NAV)
     html = f'''<!doctype html>
@@ -86,7 +93,7 @@ def page(fname, title, desc, body, current=None, extra_js='  <script src="assets
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v={_v("assets/css/style.css")}">
 </head>
 <body>
   <canvas id="net" aria-hidden="true"></canvas>
@@ -147,7 +154,7 @@ def page(fname, title, desc, body, current=None, extra_js='  <script src="assets
       </div>
     </div>
   </footer>
-{extra_js}  <script src="assets/js/main.js" defer></script>
+{extra_js}  <script src="assets/js/main.js?v={_v("assets/js/main.js")}" defer></script>
 </body>
 </html>
 '''
@@ -207,7 +214,7 @@ home = f'''    <section class="hero">
             <a class="btn btn-ghost" href="what-we-accept.html">What we accept</a>
           </div>
         </div>
-        <div class="blob-wrap" data-blob="hero" title="Drag to spin"><img src="assets/img/blob.svg" alt=""></div>
+        <div class="blob-wrap" data-blob="hero" title="Drag to spin"><img src="assets/img/blob.svg?v={_v("assets/img/blob.svg")}" alt=""></div>
       </div>
     </section>
 

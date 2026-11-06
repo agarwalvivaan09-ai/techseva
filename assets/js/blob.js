@@ -157,5 +157,12 @@
     else requestAnimationFrame(frame);
   }
 
-  document.querySelectorAll('[data-blob]').forEach(mount);
+  document.querySelectorAll('[data-blob]').forEach(function (el) {
+    var fallback = el.innerHTML;
+    try {
+      mount(el);
+      var c = el.querySelector('canvas');
+      if (c) c.addEventListener('webglcontextlost', function () { el.innerHTML = fallback; el.classList.remove('live'); });
+    } catch (e) { el.innerHTML = fallback; el.classList.remove('live'); }
+  });
 })();
