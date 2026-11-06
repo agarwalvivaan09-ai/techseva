@@ -10,10 +10,10 @@ OUT = sys.argv[1] if len(sys.argv) > 1 else "."
 
 # ---------------- CONTACT ----------------
 EMAIL = "agarwalvivaan09@gmail.com"
-PHONE_DISPLAY = "+91 XXXXX XXXXX"   # <-- replace with real number
-PHONE_TEL = "+910000000000"          # <-- replace (digits only, with +91)
-INSTAGRAM_URL = "https://www.instagram.com/vivaan_agarwal__/"   # <-- swap for TechSeva's Instagram
-INSTAGRAM_HANDLE = "@vivaan_agarwal__"
+PHONE_DISPLAY = "+91 98300 24550"
+PHONE_TEL = "+919830024550"
+INSTAGRAM_URL = "https://www.instagram.com/tech.seva_/"
+INSTAGRAM_HANDLE = "@tech.seva_"
 CITY = "Kolkata"
 SITE = "https://agarwalvivaan09-ai.github.io/techseva/"
 # -----------------------------------------
@@ -63,9 +63,10 @@ A = I["arrow"]
 def ic(n):
     return f'<div class="ic" aria-hidden="true">{I[n]}</div>'
 
-BRAND = '<img src="assets/img/logo-mark.svg" alt="" width="36" height="36"><span><b>TECH SEVA</b><small>E-WASTE SERVICE ORG</small></span>'
+BRAND = '<span class="brand-blob" data-blob="mini"><img src="assets/img/blob.svg" alt="" width="40" height="40"></span><span><b>TECH SEVA</b><small>E-WASTE SERVICE ORG</small></span>'
+BRAND_STATIC = '<img src="assets/img/logo-mark.svg" alt="" width="36" height="36"><span><b>TECH SEVA</b><small>E-WASTE SERVICE ORG</small></span>'
 
-def page(fname, title, desc, body, current=None, extra_js=""):
+def page(fname, title, desc, body, current=None, extra_js='  <script src="assets/js/vendor/three.min.js" defer></script>\n  <script src="assets/js/blob.js" defer></script>\n'):
     navlinks = "\n".join(
         f'        <li><a href="{h}"{" aria-current=\"page\"" if h == (current or fname) else ""}>{t}</a></li>' for h, t in NAV)
     html = f'''<!doctype html>
@@ -109,7 +110,7 @@ def page(fname, title, desc, body, current=None, extra_js=""):
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a class="brand" href="index.html">{BRAND}</a>
+          <a class="brand" href="index.html">{BRAND_STATIC}</a>
           <p>A student-led nonprofit collecting household e-waste in {CITY} and routing it to an authorised recycler.</p>
         </div>
         <div>
@@ -206,7 +207,7 @@ home = f'''    <section class="hero">
             <a class="btn btn-ghost" href="what-we-accept.html">What we accept</a>
           </div>
         </div>
-        <div class="blob-wrap" id="blob"><img src="assets/img/blob.svg" alt=""></div>
+        <div class="blob-wrap" data-blob="hero" title="Drag to spin"><img src="assets/img/blob.svg" alt=""></div>
       </div>
     </section>
 
@@ -261,7 +262,7 @@ home = f'''    <section class="hero">
 {CTA}'''
 page("index.html", "TechSeva | E-Waste Collection & Recycling in Kolkata",
      "TechSeva is a student-led nonprofit in Kolkata that collects old electronics from homes, schools and offices for certified, responsible recycling.",
-     home, extra_js='  <script src="assets/js/vendor/three.min.js" defer></script>\n  <script src="assets/js/blob.js" defer></script>\n')
+     home)
 
 # ======================================================== ABOUT
 about = hero("About", "Service to the planet, one drawer at a time.",

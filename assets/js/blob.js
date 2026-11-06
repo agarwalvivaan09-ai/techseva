@@ -1,16 +1,10 @@
-// TechSeva — iridescent 3D blob (three.js)
+// TechSeva — iridescent 3D blob (three.js). Mounts on every [data-blob] element.
 (function () {
-  var wrap = document.getElementById('blob');
-  if (!wrap || !window.THREE) return;
+  if (!window.THREE) return;
   var THREE = window.THREE;
-  var test = document.createElement('canvas');
-  if (!(test.getContext('webgl') || test.getContext('experimental-webgl'))) return;
-
-  var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(35, 1, .1, 100);
-  camera.position.z = 5.2;
+  var t = document.createElement('canvas');
+  if (!(t.getContext('webgl') || t.getContext('experimental-webgl'))) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var noise = [
     'vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}',
@@ -30,67 +24,138 @@
     'return 42.*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));}'
   ].join('\n');
 
-  var mat = new THREE.ShaderMaterial({
-    extensions: { derivatives: true },
-    uniforms: { uTime: { value: 0 } },
-    vertexShader: noise + [
-      'uniform float uTime; varying vec3 vPos; varying vec3 vView;',
-      'void main(){',
-      '  vec3 p = position;',
-      '  float n = snoise(p*0.62 + vec3(uTime*.12, uTime*.08, 0.)) * .38;',
-      '  n += snoise(p*1.3 - vec3(0., uTime*.1, uTime*.06)) * .07;',
-      '  p += normal * n;',
-      '  vec4 mv = modelViewMatrix * vec4(p, 1.);',
-      '  vPos = mv.xyz; vView = -mv.xyz;',
-      '  gl_Position = projectionMatrix * mv;',
-      '}'
-    ].join('\n'),
-    fragmentShader: [
-      'varying vec3 vPos; varying vec3 vView;',
-      'vec3 pal(float t){',
-      '  vec3 c1=vec3(.42,.89,1.), c2=vec3(.55,.52,1.), c3=vec3(.78,.48,1.), c4=vec3(1.,.44,.71);',
-      '  t=(.5+.5*sin(t*3.14159))*2.999;',
-      '  if(t<1.) return mix(c1,c2,t); if(t<2.) return mix(c2,c3,t-1.); return mix(c3,c4,t-2.);',
-      '}',
-      'void main(){',
-      '  vec3 n = normalize(cross(dFdx(vPos), dFdy(vPos)));',
-      '  vec3 v = normalize(vView);',
-      '  float fr = pow(1. - max(dot(n, v), 0.), 2.2);',
-      '  float t = n.y*.45 + n.x*.3 + fr*.7 - .1;',
-      '  vec3 col = pal(t);',
-      '  col = mix(col, vec3(.06,.05,.2), (1.-fr)*.15);',
-      '  vec3 L = normalize(vec3(-.4, .7, .8));',
-      '  vec3 H = normalize(L + v);',
-      '  float spec = pow(max(dot(n, H), 0.), 60.);',
-      '  float soft = pow(max(dot(n, H), 0.), 8.) * .25;',
-      '  col += vec3(1.) * (spec*.9 + soft);',
-      '  col += pal(t+.6) * fr * .25;',
-      '  gl_FragColor = vec4(col, 1.);',
-      '}'
-    ].join('\n')
-  });
+  var vert = noise + [
+    'uniform float uTime; uniform vec3 uMouse; uniform float uHover; uniform float uAmp;',
+    'varying vec3 vPos; varying vec3 vView; varying vec3 vObj;',
+    'void main(){',
+    '  vec3 p = position; vec3 dir = normalize(position);',
+    '  float n = snoise(p*0.62 + vec3(uTime*.12, uTime*.08, 0.)) * .36 * uAmp;',
+    '  n += snoise(p*1.3 - vec3(0., uTime*.1, uTime*.06)) * .07 * uAmp;',
+    '  float m = pow(max(dot(dir, uMouse), 0.), 5.);',
+    '  n += m * .38 * uHover;',
+    '  n += snoise(p*3. + uTime*.6) * .03 * uHover * m;',
+    '  p += normal * n;',
+    '  vObj = p;',
+    '  vec4 mv = modelViewMatrix * vec4(p, 1.);',
+    '  vPos = mv.xyz; vView = -mv.xyz;',
+    '  gl_Position = projectionMatrix * mv;',
+    '}'
+  ].join('\n');
 
-  var mesh = new THREE.Mesh(new THREE.IcosahedronGeometry(1.15, 64), mat);
-  scene.add(mesh);
-  wrap.innerHTML = '';
-  wrap.appendChild(renderer.domElement);
+  var frag = [
+    'uniform float uTime; uniform float uHover;',
+    'varying vec3 vPos; varying vec3 vView; varying vec3 vObj;',
+    'vec3 C1=vec3(.42,.89,1.), C2=vec3(.54,.52,1.), C3=vec3(.78,.48,1.), C4=vec3(1.,.45,.72);',
+    'vec3 pal(float t){',
+    '  t = clamp(t, 0., 1.) * 3.;',
+    '  vec3 a = mix(C1, C2, smoothstep(0., 1., t));',
+    '  a = mix(a, C3, smoothstep(1., 2., t));',
+    '  return mix(a, C4, smoothstep(2., 3., t));',
+    '}',
+    'void main(){',
+    '  vec3 n = normalize(cross(dFdx(vPos), dFdy(vPos)));',
+    '  vec3 v = normalize(vView);',
+    '  float ndv = max(dot(n, v), 0.);',
+    '  float fr = pow(1. - ndv, 2.4);',
+    '  float t = .5 + .5*sin(n.y*2.3 + n.x*1.7 + fr*2.6 + uTime*.25 + vObj.z*.9);',
+    '  vec3 base = pal(t);',
+    '  vec3 film = pal(.5 + .5*sin(ndv*5. - uTime*.3 + vObj.x));',
+    '  vec3 col = mix(base, film, .22);',
+    '  vec3 L = normalize(vec3(-.45, .75, .7));',
+    '  float diff = .35 + .65*max(dot(n, L), 0.);',
+    '  col = mix(col * vec3(.32, .26, .62), col, diff);',
+    '  vec3 H = normalize(L + v);',
+    '  float nh = max(dot(n, H), 0.);',
+    '  col += vec3(1.) * pow(nh, 110.) * .7;',
+    '  col += vec3(.85,.92,1.) * pow(nh, 14.) * .1;',
+    '  vec3 L2 = normalize(vec3(.6, -.5, .4));',
+    '  col += mix(C1, C4, .5+.5*sin(uTime*.2)) * pow(max(dot(n, normalize(L2+v)), 0.), 18.) * .22;',
+    '  col = mix(col, mix(C1, C3, .5 + .5*n.x), fr * .45);',
+    '  col += C2 * uHover * fr * .25;',
+    '  col = col / (col + vec3(.75)) * 1.55;',
+    '  float a = smoothstep(0., .18, ndv) * .12 + .88;',
+    '  gl_FragColor = vec4(col, a);',
+    '}'
+  ].join('\n');
 
-  function resize() { var s = wrap.clientWidth; renderer.setSize(s, s, false); }
-  resize(); window.addEventListener('resize', resize);
-
-  var tx = 0, ty = 0;
+  var mouse = { x: 0, y: 0, cx: -1e4, cy: -1e4 };
   window.addEventListener('pointermove', function (e) {
-    tx = (e.clientX / window.innerWidth - .5) * .6; ty = (e.clientY / window.innerHeight - .5) * .6;
-  });
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var t0 = performance.now();
-  function frame(now) {
-    var t = (now - t0) / 1000;
-    mat.uniforms.uTime.value = reduced ? 2 : t;
-    mesh.rotation.y += ((reduced ? 0 : t * .15) + tx - mesh.rotation.y) * .05;
-    mesh.rotation.x += (ty + .25 - mesh.rotation.x) * .05;
-    renderer.render(scene, camera);
-    if (!reduced) requestAnimationFrame(frame);
+    mouse.cx = e.clientX; mouse.cy = e.clientY;
+    mouse.x = e.clientX / window.innerWidth - .5; mouse.y = e.clientY / window.innerHeight - .5;
+  }, { passive: true });
+
+  function mount(el) {
+    var mini = el.getAttribute('data-blob') === 'mini';
+    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, premultipliedAlpha: false });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mini ? 3 : 2));
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(35, 1, .1, 100);
+    camera.position.z = mini ? 4.6 : 5.2;
+    var uniforms = { uTime: { value: 0 }, uMouse: { value: new THREE.Vector3(0, 0, 1) }, uHover: { value: 0 }, uAmp: { value: 1 } };
+    var mat = new THREE.ShaderMaterial({ extensions: { derivatives: true }, uniforms: uniforms, vertexShader: vert, fragmentShader: frag, transparent: true });
+    var mesh = new THREE.Mesh(new THREE.IcosahedronGeometry(1.15, mini ? 28 : 72), mat);
+    scene.add(mesh);
+    el.innerHTML = ''; el.appendChild(renderer.domElement);
+    el.classList.add('live');
+
+    function resize() { var s = el.clientWidth; renderer.setSize(s, s, false); }
+    resize(); window.addEventListener('resize', resize);
+
+    // drag to spin (big blob only)
+    var rotY = 0, rotX = .25, velY = mini ? .9 : .15, velX = 0, dragging = false, lx = 0, ly = 0, hoverT = 0, scale = 1;
+    if (!mini) {
+      el.addEventListener('pointerdown', function (e) { dragging = true; lx = e.clientX; ly = e.clientY; el.setPointerCapture(e.pointerId); el.classList.add('grab'); });
+      el.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        velY = (e.clientX - lx) * .006; velX = (e.clientY - ly) * .006; lx = e.clientX; ly = e.clientY;
+      });
+      var up = function () { dragging = false; el.classList.remove('grab'); };
+      el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up);
+    } else {
+      var a = el.closest('a') || el;
+      a.addEventListener('pointerenter', function () { hoverT = 1; });
+      a.addEventListener('pointerleave', function () { hoverT = 0; });
+    }
+
+    var visible = true;
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(el);
+
+    var t0 = performance.now(), last = t0, q = new THREE.Quaternion(), dir = new THREE.Vector3();
+    function frame(now) {
+      requestAnimationFrame(frame);
+      if (!visible || document.hidden) { last = now; return; }
+      var dt = Math.min(.05, (now - last) / 1000); last = now;
+      var time = (now - t0) / 1000;
+      uniforms.uTime.value = time;
+
+      var r = el.getBoundingClientRect();
+      var ccx = r.left + r.width / 2, ccy = r.top + r.height / 2;
+      var mx = (mouse.cx - ccx) / (r.width / 2), my = -(mouse.cy - ccy) / (r.height / 2);
+      var dist = Math.sqrt(mx * mx + my * my);
+      if (!mini) hoverT = dist < 1.15 ? 1 : Math.max(0, 1 - (dist - 1.15) * 1.5);
+      uniforms.uHover.value += (hoverT - uniforms.uHover.value) * .08;
+
+      // mouse direction in object space -> bulge toward cursor
+      dir.set(mx, my, mini ? 1.2 : .9).normalize();
+      q.copy(mesh.quaternion).invert();
+      dir.applyQuaternion(q);
+      uniforms.uMouse.value.lerp(dir, .15).normalize();
+
+      if (!dragging) {
+        var baseVel = mini ? .9 : .18;
+        velY += (baseVel * dt - velY) * .04 + (mini ? 0 : mouse.x * .0006);
+        velX *= .94;
+      }
+      rotY += velY; rotX += velX;
+      rotX += ((mini ? .25 : .25 + mouse.y * .5) - rotX) * .03;
+      mesh.rotation.set(rotX, rotY, 0);
+      var target = 1 + uniforms.uHover.value * (mini ? .08 : .04);
+      scale += (target - scale) * .1; mesh.scale.setScalar(scale);
+      renderer.render(scene, camera);
+    }
+    if (reduced) { uniforms.uTime.value = 2; mesh.rotation.set(.25, .4, 0); renderer.render(scene, camera); }
+    else requestAnimationFrame(frame);
   }
-  requestAnimationFrame(frame);
+
+  document.querySelectorAll('[data-blob]').forEach(mount);
 })();
